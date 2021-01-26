@@ -1,16 +1,10 @@
+
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-
-import models from "./models"
+import models from "./models";
 import routes from './routes';
-const app = express();
+import bodyParser from 'body-parser'
+import morgan from 'morgan'
+import morganBody from 'morgan-body';
 
-app.use(cors());
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use('/users', routes.user);
-app.use('/messages', routes.message);
