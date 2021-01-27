@@ -1,15 +1,42 @@
-
+// Imports de librerías
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import models from "./models";
-import routes from './routes';
-import bodyParser from 'body-parser'
-import morgan from 'morgan'
-import morganBody from 'morgan-body';
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import morganBody from "morgan-body";
+import mongoose from "mongoose";
 
-import mongoose from "mongoose"
+// Imports de componentes del API
+import models from './models';
+import {songs} from './routes/songs'
 
+
+
+
+// Instanciación de la aplicación de Express
+const app = express();
+
+// Inicialización y configuración de algunos middlewares
+
+// Protección CORS
+app.use(cors());
+
+// body-parser, para procesar el cuerpo de las peticiones
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Morgan y morganbody para hacer logging de las peticiones y respuestas
+app.use(morgan('dev'))
+morganBody(app);
+
+
+
+// Configuración de las rutas.
+app.use('/song', songs);
+
+
+// Inicialización del servidor y conexión a base de datos
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
   
@@ -25,3 +52,4 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
   }
 
 });
+
