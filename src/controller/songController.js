@@ -1,3 +1,5 @@
+import {songRepository} from '../repository/songRepository'
+
 const SongController = {
 
     todasLasCanciones: async (req, res) => {

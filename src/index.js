@@ -9,7 +9,9 @@ import mongoose from "mongoose";
 
 // Imports de componentes del API
 import models from './models';
-import {songs} from './routes/songs'
+import index from './routes/index';
+import routes from './routes';
+
 
 
 
@@ -33,7 +35,7 @@ morganBody(app);
 
 
 // Configuración de las rutas.
-app.use('/song', songs);
+app.use('/song', routes.songs);
 
 
 // Inicialización del servidor y conexión a base de datos
