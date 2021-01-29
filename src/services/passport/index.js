@@ -11,8 +11,7 @@ passport.use(
       usernameField: "username",
       passwordField: "password",
       session: false,
-    },
-    async (username, password, done) => {
+    }, async (username, password, done) => {
       const user = await userRepository.findByUsername(username);
       if (user == undefined) return done(null, false);
       else if (!bcrypt.compareSync(password, user.password))

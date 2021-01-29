@@ -18,7 +18,11 @@ const userRepository = {
             email: user.email
         }
     },
-    
+    async findById(id) {
+        const users = await User.find({});
+        let result = users.filter(user => user.id == id)
+        return result;
+    },
     async findByUsername(user) {
         return await  User.findOne({username: user});
     },
