@@ -1,7 +1,8 @@
 import songs from './songs'
-
+import auth from './auth'
 
 
 export default {
-    songs
+    songs,
+    auth
 }
