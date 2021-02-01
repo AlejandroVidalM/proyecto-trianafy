@@ -46,8 +46,12 @@ const SongController = {
     },
 
     eliminarCancion: async (req, res) => {
-        await songRepository.delete(req.params.id);
-        res.sendStatus(204);
+        const result = await songRepository.delete(req.params.id);
+        if (result.deletedCount  > 0 ){
+            res.sendStatus(204);
+        }else {
+            res.status(404).send('No existe una cancion con ese id.');
+        }
     }
 
 

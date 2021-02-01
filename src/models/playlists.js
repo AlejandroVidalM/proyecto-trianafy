@@ -18,4 +18,4 @@ const playlistsSchema = new Schema({
 });
 const Playlist = mongoose.model('Playlist', playlistsSchema);
 
-export {playlistsSchema}
+export {Playlist}

@@ -11,7 +11,7 @@ const AuthController = {
             fullname : req.body.fullname,
             username : req.body.username,
             email : req.body.email,
-            password : password
+            password : req.body.password
         });
         userRepository.create(usuarioCreado);
         res.status(201).json(usuarioCreado);

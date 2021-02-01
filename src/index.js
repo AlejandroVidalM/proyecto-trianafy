@@ -17,7 +17,6 @@ import passport from './services/passport';
 
 
 
-
 // Inicialización y configuración de algunos middlewares
 
 const app = express();
@@ -28,14 +27,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'))
 morganBody(app);
-
 app.use(passport.initialize());
+
 
 
 // Configuración de las rutas.
 app.use('/songs', routes.songs);
 app.use('/auth', routes.auth);
-
+app.use('/lists', routes.playlist);
 
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {

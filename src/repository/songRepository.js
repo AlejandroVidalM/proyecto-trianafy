@@ -31,12 +31,12 @@ const songRepository = {
         } else
             return undefined;
     },
-    // update(modifiedSong) {
-    //     return this.update(modifiedSong.id, modifiedSong);
-    // }, 
-    // async delete(id) {
-    //     await Song.findByIdAndRemove(id).exec();
-    // }
+    
+    async delete(id) {
+        return await Song.deleteOne({
+            _id: id
+        });
+    }
 
 }
 
