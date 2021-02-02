@@ -19,9 +19,8 @@ const userRepository = {
         }
     },
     async findById(id) {
-        const users = await User.find({});
-        let result = users.filter(user => user.id == id)
-        return result;
+        const users = await User.findOne({_id : id});
+        return users;
     },
     async findByUsername(user) {
         return await  User.findOne({username: user});
