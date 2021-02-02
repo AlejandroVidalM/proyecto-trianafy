@@ -15,7 +15,9 @@ router.put('/:id', token(), playlistController.editarPlaylist);
 router.delete('/:id', token(), playlistController.eliminarPlaylist);
 router.post('/:idPlaylist/songs/:idSong', token(), playlistController.addSong);
 router.delete('/:idPlaylist/songs/:idSong', token(), playlistController.deleteSong);
-
+router.get('/:id/songs', token(), playlistController.getPlaylistSongs);
+router.get('/:idPlaylist/songs/:idSong', token(), playlistController.getSongFromPlaylist);
+router.delete('/:idPlaylist/songs/:idSong', token(), playlistController.deleteSong);
 
 
 export default router;
