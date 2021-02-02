@@ -10,11 +10,16 @@ const playlistRepository = {
 
     },
 
-    async findById(idUser, idPlaylist){
-        return await Playlist
-        .find({user_id: idUser, _id: idPlaylist})
+    async findById(idPlaylist, idUser){
+        const result = await Playlist.find({
+            _id: idPlaylist,
+            user_id: idUser
+        })
         .populate('songs')
         .exec();
+        console.log("repository");
+        console.log(result);
+        return result;
     },
     async create(newPlaylist) {
         const playlist = new Playlist({

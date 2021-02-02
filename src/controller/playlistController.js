@@ -3,7 +3,8 @@ import { songRepository } from '../repository/songRepository';
 
 const playlistController = {
     todasLasPlaylist: async (req, res) => {
-        console.log("aAAAAAAAAAAAAAAAAAAGGGGGGGHHHHHHHHHHH");
+        console.log("req.user y req.user.id");
+        console.log(req.user);
         console.log(req.user.id);
         const data = await playlistRepository.findAll(req.user.id);
         if (Array.isArray(data) && data.length > 0) 
@@ -16,6 +17,7 @@ const playlistController = {
         let playlist = await playlistRepository.findById(req.params.id, req.user.id);
         console.log(req.params.id);
         console.log(req.user.id);
+        console.log(playlist);
         if (playlist != undefined)
             res.json(playlist);
         else
